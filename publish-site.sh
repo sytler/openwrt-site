@@ -36,7 +36,7 @@ fi
 
 # 2) Push (retry loop handles token-grant flapping)
 for i in $(seq 1 12); do
-  if out=$(git push origin main 2>&1); then
+  if out=$(git push origin +HEAD:refs/heads/main 2>&1); then
     echo "PUSH OK (attempt $i): $(echo "$out" | tail -1)"
     break
   fi
