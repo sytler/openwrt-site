@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sytler.github.io/openwrt-site/sitemap.xml

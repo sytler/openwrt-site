@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support — OpenWRT Manager</title>
+  <meta name="description" content="Support for OpenWRT Manager: FAQ, troubleshooting and contact. We answer within 48 hours.">
+  <link rel="icon" type="image/png" href="assets/icon-1024.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/icon-1024.png" alt="">
+        <span>OpenWRT&nbsp;Manager</span>
+      </a>
+      <nav class="topnav" aria-label="Main">
+        <a class="keep" href="support.html" aria-current="page">Support</a>
+        <a class="keep" href="privacy.html">Privacy</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark / light theme">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="doc">
+    <h1>Support</h1>
+    <p class="updated">OpenWRT Manager · For Android and iOS · We reply within 48 hours on business days.</p>
+
+    <div class="lang-note">
+      <a href="#english">English</a>
+      <a href="#slovensky">Slovensky</a>
+    </div>
+
+    <h2 id="english" class="lang-heading">English</h2>
+
+    <h3>Contact</h3>
+    <p>The fastest way to reach us is email: <a href="mailto:support@upc0dee.sk">support@upc0dee.sk</a>.</p>
+    <p>When reporting a problem, please include:</p>
+    <ul>
+      <li>App version (Settings → About) and platform (Android / iOS)</li>
+      <li>Your router model and OpenWRT version (<span class="mono">cat /etc/openwrt_release</span>)</li>
+      <li>What you expected vs. what happened (a screenshot helps)</li>
+    </ul>
+
+    <h3>Frequently asked questions</h3>
+    <div class="faq">
+      <details>
+        <summary>The app cannot connect to my router</summary>
+        <p>Check that LuCI RPC / SSH access is enabled and that you are on the same network (or via VPN). Verify the router IP, username and password. If you use HTTPS with a self-signed certificate, the app must trust it — see the SSL trust option in the connection settings.</p>
+      </details>
+      <details>
+        <summary>Which routers are supported?</summary>
+        <p>Any router running OpenWRT with LuCI RPC access. Most builds from 21.02 onward are supported. If your vendor firmware is not OpenWRT, the app will not be able to talk to it.</p>
+      </details>
+      <details>
+        <summary>Where are my router credentials stored?</summary>
+        <p>Only on your device, encrypted with AES‑256‑GCM. The app connects directly to your router — there is no cloud service in between and we never see your credentials.</p>
+      </details>
+      <details>
+        <summary>What does Pro include?</summary>
+        <p>Pro unlocks unlimited routers, parental control profiles, traffic history with export, adblock and VPN management. Free covers one router and the essential controls.</p>
+      </details>
+      <details>
+        <summary>How do I cancel or restore a purchase?</summary>
+        <p>Subscriptions are managed by Google Play / the App Store. Restore purchases from Settings → Subscription, or manage/cancel the subscription in your store account settings.</p>
+      </details>
+      <details>
+        <summary>Does the collection of usage data slow my router?</summary>
+        <p>No. Traffic statistics are read from your router’s own counters over your local connection. Nothing is sent to us.</p>
+      </details>
+    </div>
+
+    <hr class="lang-divider">
+
+    <h2 id="slovensky" class="lang-heading">Slovensky</h2>
+
+    <h3>Kontakt</h3>
+    <p>Najrýchlejší spôsob, ako sa k nám dopracovať, je e‑mail: <a href="mailto:support@upc0dee.sk">support@upc0dee.sk</a>.</p>
+    <p>Pri hlásení problému nám prosím napíšte:</p>
+    <ul>
+      <li>verziu aplikácie (Nastavenia → O aplikácii) a platformu (Android / iOS)</li>
+      <li>model routeru a verziu OpenWRT (<span class="mono">cat /etc/openwrt_release</span>)</li>
+      <li>čo ste očakávali verzus čo sa stalo (screenshot pomôže)</li>
+    </ul>
+
+    <h3>Časté otázky</h3>
+    <div class="faq">
+    <details>
+      <summary>Aplikácia sa nedokáže pripojiť k routeru</summary>
+      <p>Skontrolujte, či je povolený LuCI RPC / SSH prístup a či ste v rovnakej sieti (alebo cez VPN). Overte IP adresu routeru, používateľské meno a heslo. Ak používate HTTPS s vlastnou certifikátovou autoritou (self‑signed certifikát), pozrite si možnosť dôvery SSL certifikátu v nastaveniach pripojenia.</p>
+    </details>
+    <details>
+      <summary>Ktoré routre sú podporované?</summary>
+      <p>Všetky routre s OpenWRT a prístupom k LuCI RPC. Väčšina buildov od verzie 21.02 je podporovaná. Ak má router výrobcov firmware bez OpenWRT, aplikácia s ním nebude vedieť komunikovať.</p>
+    </details>
+    <details>
+      <summary>Kde sú uložené moje prihlasovacie údaje k routeru?</summary>
+      <p>Len na vašom zariadení, šifrované pomocou AES‑256‑GCM. Aplikácia sa pripája priamo k routeru — medzi nami nie je žiadny cloud a k vašim údajom nikdy nemáme prístup.</p>
+    </details>
+    <details>
+      <summary>Čo obsahuje verzia Pro?</summary>
+      <p>Pro odomyká neobmedzený počet routerov, profil rodičovskej kontroly, históriu prevádzky s exportom, správu adblocku a VPN. Bezplatná verzia pokrýva jeden router a základné ovládanie.</p>
+    </details>
+    <details>
+      <summary>Ako zruším alebo obnovím nákup?</summary>
+      <p>Predplatné spravujú Google Play / App Store. Nákup obnovíte v nastaveniach aplikácie (Nastavenia → Predplatné), predplatné zrušíte v nastaveniach účtu v príslušnom obchode.</p>
+    </details>
+    <details>
+      <summary>Spomaľuje zbieranie štatistík môj router?</summary>
+      <p>Nie. Štatistiky prevádzky čítame z počítačov samotného routeru cez lokálne pripojenie. Nič sa k nám neposiela.</p>
+    </details>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p>© 2026 upc0dee — OpenWRT Manager</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="theme.js"></script>
+</body>
+</html>

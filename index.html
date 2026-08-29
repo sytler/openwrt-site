@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" id="htmlRoot">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenWRT Manager — Router control from your pocket</title>
+  <meta name="description" content="OpenWRT Manager is the mobile control plane for your OpenWRT router: devices, Wi-Fi, firewall, QoS, parental control and traffic insights — with a privacy-first approach.">
+  <link rel="icon" type="image/png" href="assets/icon-1024.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/icon-1024.png" alt="">
+        <span>OpenWRT&nbsp;Manager</span>
+      </a>
+      <nav class="topnav" aria-label="Main">
+        <a class="keep" href="support.html">Support</a>
+        <a class="keep" href="privacy.html">Privacy</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark / light theme">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <img class="app-icon" src="assets/icon-1024.png" alt="OpenWRT Manager app icon">
+        <span class="eyebrow">Mobile control plane for OpenWRT</span>
+        <h1>Your router,<br>under control from your pocket.</h1>
+        <p class="tagline">Devices, Wi‑Fi, firewall, QoS, parental control and traffic insights — a beautiful,
+          privacy‑first companion app for your OpenWRT router.</p>
+        <div class="platform-badges">
+          <span class="badge"><b>Android</b> · Free &amp; Pro</span>
+          <span class="badge"><b>iOS</b> · Free &amp; Pro</span>
+          <span class="badge"><b>Tablet</b> · optimized layouts</span>
+          <span class="badge"><b>Languages</b> · EN + SK</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="features">
+      <h2 class="section-title">What you can do</h2>
+      <div class="grid">
+        <div class="card"><h3><span class="icon">📡</span>Devices</h3><p>See every connected device, its signal, connection type and online status at a glance.</p></div>
+        <div class="card"><h3><span class="icon">📶</span>Wi‑Fi</h3><p>Toggle radios, edit SSIDs and passwords, tune channels and bandwidth without touching LuCI.</p></div>
+        <div class="card"><h3><span class="icon">🛡️</span>Firewall &amp; QoS</h3><p>Port forwards, traffic rules and bandwidth limits — quick actions with full control.</p></div>
+        <div class="card"><h3><span class="icon">👪</span>Parental control</h3><p>Schedules, internet pauses and per-device blocks. Pro unlocks unlimited profiles.</p></div>
+        <div class="card"><h3><span class="icon">🩺</span>Diagnostics</h3><p>Ping, traceroute, DNS lookups and system log — troubleshoot straight from the sofa.</p></div>
+        <div class="card"><h3><span class="icon">📊</span>Traffic insights</h3><p>Live bandwidth plus per-device history with export (Pro).</p></div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="privacy-strip">
+        <h2 class="section-title">Privacy first, by design</h2>
+        <p>No telemetry, no analytics, no accounts. The app talks straight to your router — credentials never leave your device.</p>
+        <ul class="points">
+          <li>Router credentials stored locally, sealed with AES‑256‑GCM encryption</li>
+          <li>Direct connection to your router — no cloud middleman</li>
+          <li>No advertising SDKs, no tracking</li>
+        </ul>
+        <div class="cta-row" style="justify-content:flex-start">
+          <a class="btn btn-secondary" href="privacy.html">Read the Privacy Policy</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="download">
+      <h2 class="section-title">Get the app</h2>
+      <div class="grid">
+        <div class="card">
+          <h3><span class="icon">🤖</span>Android — Google Play</h3>
+          <p>Free download with optional Pro upgrade. <span class="mono">coming soon</span></p>
+        </div>
+        <div class="card">
+          <h3><span class="icon">🍎</span>iOS — App Store</h3>
+          <p>Free download with optional Pro upgrade. <span class="mono">coming soon</span></p>
+        </div>
+        <div class="card">
+          <h3><span class="icon">🧪</span>Beta testing</h3>
+          <p>Android builds are distributed through Firebase App Distribution for testers.</p>
+        </div>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="support.html">Need help? Support →</a>
+        <a class="btn btn-secondary" href="privacy.html">Privacy Policy</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p>© 2026 upc0dee — OpenWRT Manager</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      try {
+        var saved = localStorage.getItem('site-theme');
+        var mq = window.matchMedia('(prefers-color-scheme: light)');
+        root.classList.toggle('light', saved === 'light' || (!saved && mq.matches));
+      } catch (e) { /* storage blocked — keep dark default */ }
+      var btn = document.getElementById('themeToggle');
+      if (btn) btn.addEventListener('click', function () {
+        root.classList.toggle('light');
+        try { localStorage.setItem('site-theme', root.classList.contains('light') ? 'light' : 'dark'); } catch (e) {}
+      });
+    })();
+  </script>
+</body>
+</html>
