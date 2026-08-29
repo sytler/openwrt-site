@@ -46,7 +46,7 @@ if ! gh api --method POST repos/sytler/openwrt-site/pages \
   msg=$(cat "$pages_err")
   case "$msg" in
     *409*|*"already exists"*) echo "Pages already enabled" ;;
-    *) fail "Pages enable failed: $msg" ;;
+    *) fail "Pages enable failed: $msg — ak je to 403 'not accessible', PAT potrebuje aj Administration: RW na openwrt-site" ;;
   esac
 fi
 
