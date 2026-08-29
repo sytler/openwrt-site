@@ -1,0 +1,44 @@
+name: Deploy static site to GitHub Pages
+
+# The Pages site must be ENABLED before (or by) this run.
+# configure-pages with `enablement: true` turns Pages on using GITHUB_TOKEN —
+# no admin PAT required, works on public repos on the GitHub Free plan.
+# The repo root mirrors openwrt www/ (synced by openwrt scripts/sync-site-to-ghpages.sh).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure Pages (enable if not enabled)
+        id: pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload site (repo root as site root)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
