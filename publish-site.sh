@@ -11,12 +11,18 @@ SITE_URL_BASE="https://sytler.github.io/openwrt-site"
 fail() { echo "FAIL: $*" >&2; exit 1; }
 
 [ -d "$SITE_REPO/.git" ] || fail "site repo missing: $SITE_REPO"
+[ -d "$MAIN_REPO/www" ] || fail "main repo www/ missing: $MAIN_REPO/www — refusing to wipe site repo"
+[ -f "$MAIN_REPO/www/index.html" ] || fail "www/index.html missing — refusing sync"
 cd "$SITE_REPO"
 
 # 1) Mirror current main-repo www/ -> site repo root (same as sync-site-to-ghpages.sh)
-read -r MAIN_HEAD _ < <(git -C "$MAIN_REPO" rev-parse HEAD)
+read -r MAIN_HEAD _ < <(git -C "$MAIN_REPO" rev-parse HEAD) \
+  || fail "cannot resolve MAIN_REPO HEAD — refusing sync"
 find . -mindepth 1 -maxdepth 1 ! -name .git ! -name publish-site.sh -exec rm -rf {} +
-cp -a "$MAIN_REPO/www/." .
+cp -a "$MAIN_REPO/www/." . || fail "cp www/ failed after wipe — restoring: git -C \"$SITE_REPO\" checkout ."
+for f in index.html privacy.html support.html terms.html; do
+  [ -f "$f" ] || fail "sync incomplete: $f missing after cp — restore with: git -C $SITE_REPO checkout ."
+done
 touch .nojekyll
 # sanity: doc-relative links only
 if grep -rnE '(src|href)="/' ./*.html >/dev/null 2>&1; then
