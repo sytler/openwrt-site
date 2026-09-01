@@ -18,7 +18,7 @@ cd "$SITE_REPO"
 # 1) Mirror current main-repo www/ -> site repo root (same as sync-site-to-ghpages.sh)
 read -r MAIN_HEAD _ < <(git -C "$MAIN_REPO" rev-parse HEAD) \
   || fail "cannot resolve MAIN_REPO HEAD — refusing sync"
-find . -mindepth 1 -maxdepth 1 ! -name .git ! -name publish-site.sh ! -name publish-funnel.sh -exec rm -rf {} +
+find . -mindepth 1 -maxdepth 1 ! -name .git ! -name .github ! -name publish-site.sh ! -name publish-funnel.sh -exec rm -rf {} +
 cp -a "$MAIN_REPO/www/." . || fail "cp www/ failed after wipe — restoring: git -C \"$SITE_REPO\" checkout ."
 for f in index.html privacy.html support.html terms.html; do
   [ -f "$f" ] || fail "sync incomplete: $f missing after cp — restore with: git -C $SITE_REPO checkout ."
