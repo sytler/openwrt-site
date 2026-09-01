@@ -13,7 +13,7 @@
   --card-border-active: #3A3A4A;
   --text-primary: #E8E8F0;
   --text-secondary: #8A8A9E;
-  --text-tertiary: #808094;
+  --text-tertiary: #8E8EA2;
   --primary: #6C8CFF;
   --on-primary: #000000;
   --primary-container: #2A3A6E;
@@ -57,11 +57,19 @@
   --tertiary-container: #E8D6FF;
   --on-tertiary-container: #4A2A6E;
   --hero-glow: rgba(58, 92, 231, 0.10);
+  /* light-mode override: #34D399 = 1.77:1 on light bg (WCAG fail) — dark value stays #34D399 (10.3:1) */
+  --success: #047857; /* 5.05:1 on --bg, 5.48:1 on --surface (AA pass) */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
+
+/* WCAG 2.4.7 — keyboard focus ring (token-based, works in both themes) */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
@@ -221,4 +229,18 @@ footer {
   .hero { padding-top: var(--space-7); }
   .topnav a:not(.keep) { display: none; }
   .doc { padding-left: var(--space-4); padding-right: var(--space-4); }
+  .topbar-inner { gap: var(--space-2); }
+  .topnav { gap: var(--space-3); }
+  .topnav a { font-size: 0.85rem; }
+  .topnav a.nav-terms { display: none; }
+}
+
+/* WCAG 2.3.3 — honor user reduced-motion preference (mirrors AppAnimations) */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
